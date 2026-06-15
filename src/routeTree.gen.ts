@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as AppRouteImport } from './routes/_app'
 import { Route as AppIndexRouteImport } from './routes/_app.index'
 import { Route as ApiChatRouteImport } from './routes/api/chat'
+import { Route as AppMeetingsRouteImport } from './routes/_app.meetings'
 import { Route as AppEmailRouteImport } from './routes/_app.email'
 
 const AppRoute = AppRouteImport.update({
@@ -28,6 +29,11 @@ const ApiChatRoute = ApiChatRouteImport.update({
   path: '/api/chat',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AppMeetingsRoute = AppMeetingsRouteImport.update({
+  id: '/meetings',
+  path: '/meetings',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppEmailRoute = AppEmailRouteImport.update({
   id: '/email',
   path: '/email',
@@ -37,10 +43,12 @@ const AppEmailRoute = AppEmailRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof AppIndexRoute
   '/email': typeof AppEmailRoute
+  '/meetings': typeof AppMeetingsRoute
   '/api/chat': typeof ApiChatRoute
 }
 export interface FileRoutesByTo {
   '/email': typeof AppEmailRoute
+  '/meetings': typeof AppMeetingsRoute
   '/api/chat': typeof ApiChatRoute
   '/': typeof AppIndexRoute
 }
@@ -48,15 +56,22 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/_app': typeof AppRouteWithChildren
   '/_app/email': typeof AppEmailRoute
+  '/_app/meetings': typeof AppMeetingsRoute
   '/api/chat': typeof ApiChatRoute
   '/_app/': typeof AppIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/email' | '/api/chat'
+  fullPaths: '/' | '/email' | '/meetings' | '/api/chat'
   fileRoutesByTo: FileRoutesByTo
-  to: '/email' | '/api/chat' | '/'
-  id: '__root__' | '/_app' | '/_app/email' | '/api/chat' | '/_app/'
+  to: '/email' | '/meetings' | '/api/chat' | '/'
+  id:
+    | '__root__'
+    | '/_app'
+    | '/_app/email'
+    | '/_app/meetings'
+    | '/api/chat'
+    | '/_app/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -87,6 +102,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiChatRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_app/meetings': {
+      id: '/_app/meetings'
+      path: '/meetings'
+      fullPath: '/meetings'
+      preLoaderRoute: typeof AppMeetingsRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/_app/email': {
       id: '/_app/email'
       path: '/email'
@@ -99,11 +121,13 @@ declare module '@tanstack/react-router' {
 
 interface AppRouteChildren {
   AppEmailRoute: typeof AppEmailRoute
+  AppMeetingsRoute: typeof AppMeetingsRoute
   AppIndexRoute: typeof AppIndexRoute
 }
 
 const AppRouteChildren: AppRouteChildren = {
   AppEmailRoute: AppEmailRoute,
+  AppMeetingsRoute: AppMeetingsRoute,
   AppIndexRoute: AppIndexRoute,
 }
 
