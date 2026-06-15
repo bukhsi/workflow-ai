@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as AppRouteImport } from './routes/_app'
 import { Route as AppIndexRouteImport } from './routes/_app.index'
 import { Route as ApiChatRouteImport } from './routes/api/chat'
+import { Route as AppPlannerRouteImport } from './routes/_app.planner'
 import { Route as AppMeetingsRouteImport } from './routes/_app.meetings'
 import { Route as AppEmailRouteImport } from './routes/_app.email'
 
@@ -29,6 +30,11 @@ const ApiChatRoute = ApiChatRouteImport.update({
   path: '/api/chat',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AppPlannerRoute = AppPlannerRouteImport.update({
+  id: '/planner',
+  path: '/planner',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppMeetingsRoute = AppMeetingsRouteImport.update({
   id: '/meetings',
   path: '/meetings',
@@ -44,11 +50,13 @@ export interface FileRoutesByFullPath {
   '/': typeof AppIndexRoute
   '/email': typeof AppEmailRoute
   '/meetings': typeof AppMeetingsRoute
+  '/planner': typeof AppPlannerRoute
   '/api/chat': typeof ApiChatRoute
 }
 export interface FileRoutesByTo {
   '/email': typeof AppEmailRoute
   '/meetings': typeof AppMeetingsRoute
+  '/planner': typeof AppPlannerRoute
   '/api/chat': typeof ApiChatRoute
   '/': typeof AppIndexRoute
 }
@@ -57,19 +65,21 @@ export interface FileRoutesById {
   '/_app': typeof AppRouteWithChildren
   '/_app/email': typeof AppEmailRoute
   '/_app/meetings': typeof AppMeetingsRoute
+  '/_app/planner': typeof AppPlannerRoute
   '/api/chat': typeof ApiChatRoute
   '/_app/': typeof AppIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/email' | '/meetings' | '/api/chat'
+  fullPaths: '/' | '/email' | '/meetings' | '/planner' | '/api/chat'
   fileRoutesByTo: FileRoutesByTo
-  to: '/email' | '/meetings' | '/api/chat' | '/'
+  to: '/email' | '/meetings' | '/planner' | '/api/chat' | '/'
   id:
     | '__root__'
     | '/_app'
     | '/_app/email'
     | '/_app/meetings'
+    | '/_app/planner'
     | '/api/chat'
     | '/_app/'
   fileRoutesById: FileRoutesById
@@ -102,6 +112,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiChatRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_app/planner': {
+      id: '/_app/planner'
+      path: '/planner'
+      fullPath: '/planner'
+      preLoaderRoute: typeof AppPlannerRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/_app/meetings': {
       id: '/_app/meetings'
       path: '/meetings'
@@ -122,12 +139,14 @@ declare module '@tanstack/react-router' {
 interface AppRouteChildren {
   AppEmailRoute: typeof AppEmailRoute
   AppMeetingsRoute: typeof AppMeetingsRoute
+  AppPlannerRoute: typeof AppPlannerRoute
   AppIndexRoute: typeof AppIndexRoute
 }
 
 const AppRouteChildren: AppRouteChildren = {
   AppEmailRoute: AppEmailRoute,
   AppMeetingsRoute: AppMeetingsRoute,
+  AppPlannerRoute: AppPlannerRoute,
   AppIndexRoute: AppIndexRoute,
 }
 
