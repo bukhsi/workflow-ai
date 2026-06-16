@@ -26,6 +26,8 @@ export function TrendChart({ data }: { data: { date: string; minutes: number }[]
           tickLine={false}
           axisLine={false}
           tickMargin={8}
+          interval="preserveStartEnd"
+          minTickGap={16}
           tickFormatter={(v: string) => v.slice(5)}
         />
         <YAxis tickLine={false} axisLine={false} tickMargin={8} width={32} />
