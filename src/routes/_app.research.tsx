@@ -23,7 +23,7 @@ import { recordEvent } from "@/lib/usage";
 export const Route = createFileRoute("/_app/research")({
   head: () => ({
     meta: [
-      { title: "AI Research Assistant — Workspace AI" },
+      { title: "AI Research Assistant — Bukhulu's AI" },
       { name: "description", content: "Generate structured business research reports in seconds." },
     ],
   }),

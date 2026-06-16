@@ -18,7 +18,7 @@ import { recordEvent } from "@/lib/usage";
 export const Route = createFileRoute("/_app/meetings")({
   head: () => ({
     meta: [
-      { title: "Meeting Summarizer — Workspace AI" },
+      { title: "Meeting Summarizer — Bukhulu's AI" },
       { name: "description", content: "Turn meeting transcripts into action items and decisions." },
     ],
   }),

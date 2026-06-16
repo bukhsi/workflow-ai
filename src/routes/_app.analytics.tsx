@@ -12,7 +12,7 @@ import { Clock, TrendingUp, Calendar } from "lucide-react";
 export const Route = createFileRoute("/_app/analytics")({
   head: () => ({
     meta: [
-      { title: "Analytics — Workspace AI" },
+      { title: "Analytics — Bukhulu's AI" },
       { name: "description", content: "Productivity trends and time-saved breakdown." },
     ],
   }),
