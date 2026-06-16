@@ -25,7 +25,7 @@ import { recordEvent } from "@/lib/usage";
 export const Route = createFileRoute("/_app/planner")({
   head: () => ({
     meta: [
-      { title: "AI Task Planner — Workspace AI" },
+      { title: "AI Task Planner — Bukhulu's AI" },
       { name: "description", content: "Transform goals into structured project roadmaps." },
     ],
   }),

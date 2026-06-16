@@ -24,7 +24,7 @@ import { recordEvent } from "@/lib/usage";
 export const Route = createFileRoute("/_app/email")({
   head: () => ({
     meta: [
-      { title: "Smart Email Generator — Workspace AI" },
+      { title: "Intelligent Email Generator — Bukhulu's AI" },
       { name: "description", content: "Draft professional emails in seconds with AI." },
     ],
   }),
@@ -62,7 +62,7 @@ function EmailPage() {
   return (
     <div className="mx-auto flex w-full max-w-6xl flex-col gap-6">
       <PageHeader
-        title="Smart Email Generator"
+        title="Intelligent Email Generator"
         description="Describe what you need to say — get a polished, ready-to-send email."
       />
       <AiDisclaimer />

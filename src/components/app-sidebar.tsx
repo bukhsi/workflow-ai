@@ -6,13 +6,13 @@ import {
   ListChecks,
   Search,
   MessageSquare,
-  BarChart3,
   Settings,
   Sparkles,
 } from "lucide-react";
 import {
   Sidebar,
   SidebarContent,
+  SidebarFooter,
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,
@@ -24,15 +24,14 @@ import {
 
 const main = [
   { title: "Dashboard", url: "/", icon: LayoutDashboard },
-  { title: "Smart Email", url: "/email", icon: Mail },
+  { title: "Intelligent Email", url: "/email", icon: Mail },
   { title: "Meeting Summarizer", url: "/meetings", icon: FileText },
   { title: "Task Planner", url: "/planner", icon: ListChecks },
   { title: "Research Assistant", url: "/research", icon: Search },
   { title: "AI Chat", url: "/chat", icon: MessageSquare },
 ] as const;
 
-const secondary = [
-  { title: "Analytics", url: "/analytics", icon: BarChart3 },
+const footerItems = [
   { title: "Settings", url: "/settings", icon: Settings },
 ] as const;
 
@@ -48,7 +47,7 @@ export function AppSidebar() {
             <Sparkles className="h-4 w-4" />
           </div>
           <div className="flex flex-col leading-tight group-data-[collapsible=icon]:hidden">
-            <span className="text-sm font-semibold">Workspace AI</span>
+            <span className="text-sm font-semibold">Bukhulu's AI</span>
             <span className="text-xs text-muted-foreground">Productivity Suite</span>
           </div>
         </Link>
@@ -76,29 +75,26 @@ export function AppSidebar() {
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
-        <SidebarGroup>
-          <SidebarGroupLabel>Insights</SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              {secondary.map((item) => (
-                <SidebarMenuItem key={item.url}>
-                  <SidebarMenuButton
-                    asChild
-                    isActive={isActive(item.url)}
-                    tooltip={item.title}
-                    className="group/nav relative overflow-hidden transition-all duration-200 hover:translate-x-0.5 hover:bg-primary/10 hover:text-primary hover:shadow-[inset_3px_0_0_0_var(--primary)]"
-                  >
-                    <Link to={item.url}>
-                      <item.icon className="transition-transform duration-200 group-hover/nav:scale-110" />
-                      <span>{item.title}</span>
-                    </Link>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
       </SidebarContent>
+      <SidebarFooter className="border-t">
+        <SidebarMenu>
+          {footerItems.map((item) => (
+            <SidebarMenuItem key={item.url}>
+              <SidebarMenuButton
+                asChild
+                isActive={isActive(item.url)}
+                tooltip={item.title}
+                className="group/nav relative overflow-hidden transition-all duration-200 hover:translate-x-0.5 hover:bg-primary/10 hover:text-primary hover:shadow-[inset_3px_0_0_0_var(--primary)]"
+              >
+                <Link to={item.url}>
+                  <item.icon className="transition-transform duration-200 group-hover/nav:scale-110" />
+                  <span>{item.title}</span>
+                </Link>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+          ))}
+        </SidebarMenu>
+      </SidebarFooter>
     </Sidebar>
   );
 }

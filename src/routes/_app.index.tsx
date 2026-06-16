@@ -11,7 +11,7 @@ import { useUsage } from "@/hooks/use-usage";
 export const Route = createFileRoute("/_app/")({
   head: () => ({
     meta: [
-      { title: "Dashboard — Workspace AI" },
+      { title: "Dashboard — Bukhulu's AI" },
       { name: "description", content: "Track productivity gains and launch AI tools from one place." },
     ],
   }),

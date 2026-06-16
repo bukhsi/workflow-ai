@@ -10,7 +10,7 @@ import { Moon, Sun, Trash2 } from "lucide-react";
 export const Route = createFileRoute("/_app/settings")({
   head: () => ({
     meta: [
-      { title: "Settings — Workspace AI" },
+      { title: "Settings — Bukhulu's AI" },
       { name: "description", content: "Appearance and data preferences." },
     ],
   }),
@@ -26,7 +26,7 @@ function SettingsPage() {
 
       <Card className="flex flex-col gap-3 p-6">
         <h3 className="text-sm font-semibold">Appearance</h3>
-        <p className="text-xs text-muted-foreground">Choose how Workspace AI looks on this device.</p>
+        <p className="text-xs text-muted-foreground">Choose how Bukhulu's AI looks on this device.</p>
         <div className="flex gap-2">
           <Button
             variant={theme === "light" ? "default" : "outline"}

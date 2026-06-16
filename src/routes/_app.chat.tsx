@@ -13,7 +13,7 @@ import { recordEvent } from "@/lib/usage";
 export const Route = createFileRoute("/_app/chat")({
   head: () => ({
     meta: [
-      { title: "AI Chat — Workspace AI" },
+      { title: "AI Chat — Bukhulu's AI" },
       { name: "description", content: "Conversational AI for everyday workplace tasks." },
     ],
   }),
