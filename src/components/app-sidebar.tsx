@@ -60,9 +60,14 @@ export function AppSidebar() {
             <SidebarMenu>
               {main.map((item) => (
                 <SidebarMenuItem key={item.url}>
-                  <SidebarMenuButton asChild isActive={isActive(item.url)} tooltip={item.title}>
+                  <SidebarMenuButton
+                    asChild
+                    isActive={isActive(item.url)}
+                    tooltip={item.title}
+                    className="group/nav relative overflow-hidden transition-all duration-200 hover:translate-x-0.5 hover:bg-primary/10 hover:text-primary hover:shadow-[inset_3px_0_0_0_var(--primary)]"
+                  >
                     <Link to={item.url}>
-                      <item.icon />
+                      <item.icon className="transition-transform duration-200 group-hover/nav:scale-110" />
                       <span>{item.title}</span>
                     </Link>
                   </SidebarMenuButton>
@@ -77,9 +82,14 @@ export function AppSidebar() {
             <SidebarMenu>
               {secondary.map((item) => (
                 <SidebarMenuItem key={item.url}>
-                  <SidebarMenuButton asChild isActive={isActive(item.url)} tooltip={item.title}>
+                  <SidebarMenuButton
+                    asChild
+                    isActive={isActive(item.url)}
+                    tooltip={item.title}
+                    className="group/nav relative overflow-hidden transition-all duration-200 hover:translate-x-0.5 hover:bg-primary/10 hover:text-primary hover:shadow-[inset_3px_0_0_0_var(--primary)]"
+                  >
                     <Link to={item.url}>
-                      <item.icon />
+                      <item.icon className="transition-transform duration-200 group-hover/nav:scale-110" />
                       <span>{item.title}</span>
                     </Link>
                   </SidebarMenuButton>
