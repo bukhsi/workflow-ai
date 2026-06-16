@@ -2,7 +2,9 @@ import { useEffect, useMemo, useState } from "react";
 import { loadEvents, type UsageEvent, type ToolKey } from "@/lib/usage";
 
 export function useUsage() {
-  const [events, setEvents] = useState<UsageEvent[]>([]);
+  const [events, setEvents] = useState<UsageEvent[]>(() =>
+    typeof window === "undefined" ? [] : loadEvents(),
+  );
 
   useEffect(() => {
     setEvents(loadEvents());
